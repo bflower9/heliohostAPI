@@ -13,7 +13,7 @@ ALLOWED_HOSTS = ['api.mahbd.heliohost.us', '127.0.0.1']
 
 INSTALLED_APPS = [
     'users',
-    # 'faceModel',
+    'faceModel',
     # 'rest_framework',
     # 'corsheaders',
     'django.contrib.admin',
