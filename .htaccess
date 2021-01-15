@@ -2,5 +2,5 @@ RewriteEngine On
 RewriteBase /
 RewriteRule ^(cgi-bin/.*)$ - [L]
 RewriteRule ^(static/.*)$ - [L]
-RewriteRule ^(dispatch\.wsgi/.*)$ - [L]
-RewriteRule ^(.*)$ dispatch.wsgi/$1 [QSA,PT,L]
+RewriteRule ^(heliohostAPI/dispatch\.wsgi/.*)$ - [L]
+RewriteRule ^(.*)$ heliohostAPI/dispatch.wsgi/$1 [QSA,PT,L]
