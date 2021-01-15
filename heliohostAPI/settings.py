@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     'faceModel',
     'rest_framework',
     'corsheaders',
+    'django_jsonfield_backport',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
