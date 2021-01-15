@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /
+RewriteRule ^(cgi-bin/.*)$ - [L]
+RewriteRule ^(dispatch\.wsgi/.*)$ - [L]
+RewriteRule ^(.*)$ dispatch.wsgi/$1 [QSA,PT,L]
