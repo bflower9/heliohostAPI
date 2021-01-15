@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.urls import path, include
 
 urlpatterns = [
-    path('', lambda: HttpResponse('Welcome to api.mahbd.heliohost.us')),
+    path('', lambda x: HttpResponse('Welcome to api.mahbd.heliohost.us')),
     path('admin/', admin.site.urls),
     path('face_models/', include('faceModel.urls')),
 ]
