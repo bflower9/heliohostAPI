@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+from corsheaders.defaults import default_headers
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -110,7 +112,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Cors Header
 AUTH_USER_MODEL = 'users.User'
+AUTHENTICATION_BACKENDS = ['users.views.PasswordTokenBackend']
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'Authorization',
+]
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"  #
 EMAIL_HOST = "smtp.gmail.com"  #
@@ -118,3 +124,10 @@ EMAIL_HOST_USER = os.environ.get('EMAIL')  #
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')  #
 EMAIL_PORT = 587  #
 EMAIL_USE_TLS = True  #
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
