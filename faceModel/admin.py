@@ -4,7 +4,7 @@ from faceModel.models import FaceModels
 
 
 class FaceAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name', 'user')
     search_fields = ('name', 'user__username', 'user__first_name', 'user__last_name')
 
 

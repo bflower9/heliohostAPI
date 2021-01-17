@@ -8,6 +8,7 @@ urlpatterns = [
     path('', lambda x: HttpResponse('Welcome to api.mahbd.heliohost.us')),
     path('admin/', admin.site.urls),
     path('face_models/', include('faceModel.urls')),
+    path('users/', include('users.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

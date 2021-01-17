@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock title %}
+{% block content %}
+    <div style="padding-top: 60px">
+        <form action="{% url 'register' %}" method="post"
+              style="margin: 0 auto; width: 400px; background-color: #dddddd">
+            {% csrf_token %}
+            <h1 class="h3 mb-3" style="text-align: center"> Register</h1>
+            {% for field in form %}
+                <label for="{{ field.name }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+                <br>
+            {% endfor %}
+
+            <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
+            <a class="btn btn-outline-success" href="{% url 'login' %}"><i class="fa fa-angle-left"></i> Back</a>
+        </form>
+    </div>
+{% endblock content %}

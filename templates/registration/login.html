@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Login here{% endblock title %}
+{% block content %}
+    <div style="padding-top: 60px">
+        <form class="form-group rounded-top" style="margin: 0 auto; width: 400px; background-color: #dddddd"
+              method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <h1 class="h3 mb-3" style="text-align: center"> Sign in</h1>
+            {% if form.errors %}
+                <div class="alert alert-danger">Enter correct username and password</div>
+            {% endif %}
+            {% if next %}
+                {% if user.is_authenticated %}
+                    <div class="alert alert-danger">Your account doesn't have access to this page. To proceed,
+                        please login with an account that has access.
+                    </div>
+                {% else %}
+                    <div class="alert alert-danger">Please login to see this page.</div>
+                {% endif %}
+            {% endif %}
+            <label for="inputEmail">Username or Email</label>
+            {{ form.username }}
+            <label for="inputPassword">Password</label>
+            {{ form.password }}
+            <input type="submit" value="Login" class="btn btn-success btn-block fa fa-sign-in">
+            <input type="hidden" name="next" value="{{ next }}">
+            <a href="{% url 'password_reset' %}" class="text-success pt-2">Forgot password?</a>
+            <hr>
+            <p>Don't have an account!</p>
+            <a href="{% url 'register' %}" class="btn btn-primary btn-block fa fa-user-plus" type="button"
+               id="btn-signup">
+                Sign up New Account
+            </a>
+        </form>
+    </div>
+{% endblock content %}
